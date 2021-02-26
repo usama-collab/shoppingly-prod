@@ -185,9 +185,8 @@ def orders(request):
     op = OrderPlaced.objects.filter(user=request.user)
     return render(request, 'app/orders.html', {'order_placed': op})
 
+
 # filter for mobile
-
-
 def mobile(request, data=None):
     if data == None:
         mobiles = Product.objects.filter(category='M')
@@ -205,9 +204,8 @@ def mobile(request, data=None):
         totalitem = len(Cart.objects.filter(user=request.user))
     return render(request, 'app/mobile.html', {'mobiles': mobiles, 'totalitem': totalitem})
 
+
 # filter for topwear
-
-
 def topwear(request, data=None):
     if data == None:
         topwear = Product.objects.filter(category='TW')
