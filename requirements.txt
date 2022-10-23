@@ -26,3 +26,5 @@ toml==0.10.2
 virtualenv==20.16.5
 virtualenv-clone==0.5.7
 wrapt==1.12.1
+django-storages
+boto3

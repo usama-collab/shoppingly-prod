@@ -1,0 +1,3 @@
+if we set up files correctly according to boto3 and django-storages like we did
+in this our cdn folder, then after running command "python manage.py collecstatic"
+it will take a few moments and upload our static assets to our digitalocean s3 bucket.

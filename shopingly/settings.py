@@ -25,12 +25,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 # from django.core.management.utils import get_random_secret_key
 # SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
-SECRET_KEY = 't@%g4=q9!yn2-6)qq)9gz4tu2h62!eh--vg55go2yc*hq#)4mb'
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.getenv("DEBUG", "False") == "True"
-# DEBUG = True
-# ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
+DEBUG = True
+# if not DEBUG:
+#     ALLOWED_HOSTS += os.getenv("DJANGO_ALLOWED_HOSTS",
+#                                "127.0.0.1,localhost").split(",")
 ALLOWED_HOSTS = ["*"]
 
 
@@ -43,6 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 3rd party
+    'storages',
+    # internal
     'app.apps.AppConfig',
 ]
 
@@ -128,8 +133,11 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'static'
 # extra line for digitalocean space to collect data from
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, '/workspace/static'),
+    os.path.join(BASE_DIR, 'staticfiles-cdn'),
 )
+
+# noqa: letting vscode know that this import is fine for now,not part of good practices because it actually indirectly put all code in "conf.py" file here, we do this because for now we want to import all that code here.
+from .cdn.conf import *  # noqa
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -146,3 +154,9 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#  https://shopingly-space.fra1.digitaloceanspaces.com
+# digitalocean aws-key, these keys are s3 capable which means we can use a 3rd party package called "django-storages" that will treat these below keys as we normally would with AWS keys, basically it's like a username(AWS_ACCESS_KEY_ID) and password (AWS_SECRET_ACCESS_KEY) we can consider of static files api for this app.
+AWS_ACCESS_KEY_ID = "DO00Z66JVFJMQMDRZ97K"
+AWS_SECRET_ACCESS_KEY = "BYijpcQHLC/UXd2BXF/SZddiL13a6pn2ODzHm+VmGJg"
+# AWS_BUCKET_NAME = "shopingly-space"
