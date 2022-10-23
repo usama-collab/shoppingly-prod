@@ -26,11 +26,10 @@ pylint==2.6.2
 python-dateutil==2.8.2
 pytz==2021.1
 s3transfer==0.6.0
-six==1.15.0
+six==1.16.0
 sqlparse==0.4.3
 toml==0.10.2
 urllib3==1.26.12
 virtualenv==20.16.5
 virtualenv-clone==0.5.7
 wrapt==1.12.1
-
