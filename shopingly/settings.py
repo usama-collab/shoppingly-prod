@@ -158,9 +158,3 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-#  https://shopingly-space.fra1.digitaloceanspaces.com
-# digitalocean aws-key, these keys are s3 capable which means we can use a 3rd party package called "django-storages" that will treat these below keys as we normally would with AWS keys, basically it's like a username(AWS_ACCESS_KEY_ID) and password (AWS_SECRET_ACCESS_KEY) we can consider of static files api for this app.
-AWS_ACCESS_KEY_ID = "DO00Z66JVFJMQMDRZ97K"
-AWS_SECRET_ACCESS_KEY = "BYijpcQHLC/UXd2BXF/SZddiL13a6pn2ODzHm+VmGJg"
-AWS_BUCKET_NAME = "shopingly-space"
