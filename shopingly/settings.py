@@ -139,6 +139,7 @@ STATIC_ROOT = BASE_DIR / 'static'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'staticfiles-cdn'),
 )
+MEDIA_ROOT = BASE_DIR / "staticfiles-cdn" / "productimg"
 
 # noqa: letting vscode know that this import is fine for now,not part of good practices because it actually indirectly put all code in "conf.py" file here, we do this because for now we want to import all that code here.
 from .cdn.conf import *  # noqa
