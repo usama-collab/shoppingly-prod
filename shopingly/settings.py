@@ -9,11 +9,13 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
+from email.policy import default
 import os
 import sys
 from pathlib import Path
 # added
 import dj_database_url
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,11 +27,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 # from django.core.management.utils import get_random_secret_key
 # SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
-SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
+# SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
+SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.getenv("DEBUG", "False") == "True"
-DEBUG = True
+DEBUG = config('DEBUG', cast=bool, default=True)
 # if not DEBUG:
 #     ALLOWED_HOSTS += os.getenv("DJANGO_ALLOWED_HOSTS",
 #                                "127.0.0.1,localhost").split(",")
@@ -150,8 +153,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

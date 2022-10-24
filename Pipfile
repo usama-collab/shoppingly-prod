@@ -16,6 +16,8 @@ psycopg2-binary = "*"
 dj-database-url = "*"
 django-storages = "*"
 boto3 = "*"
+django-dotenv = "*"
+python-decouple = "*"
 
 [requires]
 python_version = "3.9.0"
