@@ -137,7 +137,9 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # noqa: letting vscode know that this import is fine for now,not part of good practices because it actually indirectly put all code in "conf.py" file here, we do this because for now we want to import all that code here.
 from .cdn.conf import *  # noqa
 AWS_DEFAULT_ACL = 'public-read'
-# PUBLIC_MEDIA_LOCATION = 'media'
+PUBLIC_MEDIA_LOCATION = 'media'
+STATIC_URL = f'https://{AWS_S3_ENDPOINT_URL}/{AWS_LOCATION}/'
+MEDIA_URL = f'https://{AWS_S3_ENDPOINT_URL}/{PUBLIC_MEDIA_LOCATION}/'
 
 
 LOGIN_REDIRECT_URL = '/profile/'
