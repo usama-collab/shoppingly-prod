@@ -11,6 +11,7 @@ class StaticRootS3Boto3Storage(S3Boto3Storage):
 
 class MediaRootS3Boto3Storage(S3Boto3Storage):
     location = "media"
+    default_acl = 'public-read'
 
 
 # above provided locations we set similar to our local settings so the directories

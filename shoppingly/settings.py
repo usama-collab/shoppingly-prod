@@ -122,10 +122,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'static'
-# STATICFILES_DIRS = [
-#     BASE_DIR / "static",
-# ]
+STATIC_ROOT = BASE_DIR / 'staticfiles-cdn'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
@@ -136,6 +136,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # noqa: letting vscode know that this import is fine for now,not part of good practices because it actually indirectly put all code in "conf.py" file here, we do this because for now we want to import all that code here.
 from .cdn.conf import *  # noqa
+PUBLIC_MEDIA_LOCATION = 'media'
 
 
 LOGIN_REDIRECT_URL = '/profile/'
