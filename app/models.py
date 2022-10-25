@@ -63,7 +63,7 @@ class Product(models.Model):
     brand = models.CharField(max_length=100)
     category = models.CharField(choices=CATEGORY_CHOICES, max_length=2)
     # rather then saving image with original name, make a unique name by uui+time stamp,
-    product_image = models.ImageField(upload_to='productimg/')
+    product_image = models.FileField(upload_to='productimg/')
     # product_image = models.ImageField(upload_to="productimg/")
 
     def __str__(self):
