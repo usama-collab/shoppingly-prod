@@ -1,3 +1,4 @@
+from ctypes import cast
 from email.policy import default
 import os
 import sys
@@ -121,25 +122,50 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'static'
-# STATICFILES_DIRS = [
+# STATIC_URL = '/static/'
+# STATIC_ROOT = BASE_DIR / 'static'
+# # STATICFILES_DIRS = [
 #     BASE_DIR / "static",
 # ]
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # STATIC_ROOT = BASE_DIR / 'staticfiles-cdn'  # in production we want cdn
 # extra line for digitalocean space to collect data from
 # MEDIA_ROOT = BASE_DIR / "staticfiles-cdn" / "uploads"
 
+# static and media
+USE_SPACES = config('USE_SPACES', cast=bool, default=False)
+
+if USE_SPACES:
+    # settings
+    AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
+    AWS_DEFAULT_ACL = 'public-read'
+    AWS_S3_ENDPOINT_URL = config('AWS_S3_ENDPOINT_URL')
+    AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
+    # static settings
+    AWS_LOCATION = 'static'
+    STATIC_URL = f'https://{AWS_S3_ENDPOINT_URL}/{AWS_LOCATION}/'
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+else:
+    STATIC_URL = '/static/'
+    STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+STATICFILES_DIRS = (BASE_DIR / 'static',)
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'mediafiles'
+
+
 # noqa: letting vscode know that this import is fine for now,not part of good practices because it actually indirectly put all code in "conf.py" file here, we do this because for now we want to import all that code here.
-from .cdn.conf import *  # noqa
-AWS_DEFAULT_ACL = 'public-read'
-PUBLIC_MEDIA_LOCATION = 'media'
-STATIC_URL = f'https://{AWS_S3_ENDPOINT_URL}/{AWS_LOCATION}/'
-MEDIA_URL = f'https://{AWS_S3_ENDPOINT_URL}/{PUBLIC_MEDIA_LOCATION}/'
+# from .cdn.conf import *  # noqa
+# AWS_DEFAULT_ACL = 'public-read'
+# PUBLIC_MEDIA_LOCATION = 'media'
+# STATIC_URL = f'https://{AWS_S3_ENDPOINT_URL}/{AWS_LOCATION}/'
+# MEDIA_URL = f'https://{AWS_S3_ENDPOINT_URL}/{PUBLIC_MEDIA_LOCATION}/'
 
 
 LOGIN_REDIRECT_URL = '/profile/'

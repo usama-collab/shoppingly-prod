@@ -4,7 +4,7 @@ from decouple import config
 AWS_ACCESS_KEY_ID = config("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = config("AWS_SECRET_ACCESS_KEY")
 AWS_STORAGE_BUCKET_NAME = config("AWS_STORAGE_BUCKET_NAME")
-AWS_S3_ENDPOINT_URL = "https://fra1.digitaloceanspaces.com"
+AWS_S3_ENDPOINT_URL = config("AWS_S3_ENDPOINT_URL")
 
 # setting catch control parameters upto a 1 day
 AWS_S3_OBJECT_PARAMETERS = {
