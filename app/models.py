@@ -48,11 +48,11 @@ CATEGORY_CHOICES = (
 # function for generating unique name images for "Product"
 
 
-def ProductImageUploadHandler(instance, filename):
-    file_path = pathlib.Path(filename)
-    new_img_name = str(uuid.uuid1())  # uuid1 -> uuid + timestamps
-    # file_path.suffix: abc.png def.img
-    return f"productimg/{new_img_name}{file_path.suffix}"
+# def ProductImageUploadHandler(instance, filename):
+#     file_path = pathlib.Path(filename)
+#     new_img_name = str(uuid.uuid1())  # uuid1 -> uuid + timestamps
+#     # file_path.suffix: abc.png def.img
+#     return f"productimg/{new_img_name}{file_path.suffix}"
 
 
 class Product(models.Model):
@@ -62,8 +62,9 @@ class Product(models.Model):
     description = models.TextField()
     brand = models.CharField(max_length=100)
     category = models.CharField(choices=CATEGORY_CHOICES, max_length=2)
-    # product_image = models.ImageField(upload_to='productimg/') #rather then saving image with original name, make a unique name by uui+time stamp,
-    product_image = models.ImageField(upload_to=ProductImageUploadHandler)
+    # rather then saving image with original name, make a unique name by uui+time stamp,
+    product_image = models.ImageField(upload_to='productimg/')
+    # product_image = models.ImageField(upload_to="productimg/")
 
     def __str__(self):
         return str(self.id)
