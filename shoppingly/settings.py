@@ -157,7 +157,7 @@ else:
 STATICFILES_DIRS = (BASE_DIR / 'static',)
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'mediafiles'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # noqa: letting vscode know that this import is fine for now,not part of good practices because it actually indirectly put all code in "conf.py" file here, we do this because for now we want to import all that code here.
