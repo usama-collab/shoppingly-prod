@@ -153,7 +153,7 @@ if USE_SPACES:
     # public media settings
     PUBLIC_MEDIA_LOCATION = 'media'
     MEDIA_URL = f'https://{AWS_S3_ENDPOINT_URL}/{PUBLIC_MEDIA_LOCATION}/'
-    DEFAULT_FILE_STORAGE = 'shoppingly.cdn.backends'
+    DEFAULT_FILE_STORAGE = 'shoppingly.cdn.backends.PublicMediaRootS3Boto3Storages'
 else:
     STATIC_URL = '/static/'
     STATIC_ROOT = BASE_DIR / 'staticfiles'
