@@ -8,7 +8,7 @@ alias deactivate 'test $?_OLD_VIRTUAL_PATH != 0 && setenv PATH "$_OLD_VIRTUAL_PA
 # Unset irrelevant variables.
 deactivate nondestructive
 
-setenv VIRTUAL_ENV "/media/qandeel/Drive0/programs/python/shopingly/venv-shopingly"
+setenv VIRTUAL_ENV "/media/qandeel/Drive0/programs/python/shoppingly/venv-shoppingly"
 
 set _OLD_VIRTUAL_PATH="$PATH"
 setenv PATH "$VIRTUAL_ENV/bin:$PATH"
@@ -17,8 +17,8 @@ setenv PATH "$VIRTUAL_ENV/bin:$PATH"
 set _OLD_VIRTUAL_PROMPT="$prompt"
 
 if (! "$?VIRTUAL_ENV_DISABLE_PROMPT") then
-    set prompt = "(venv-shopingly) $prompt"
-    setenv VIRTUAL_ENV_PROMPT "(venv-shopingly) "
+    set prompt = "(venv-shoppingly) $prompt"
+    setenv VIRTUAL_ENV_PROMPT "(venv-shoppingly) "
 endif
 
 alias pydoc python -m pydoc
