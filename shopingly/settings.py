@@ -134,13 +134,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles-cdn'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
-STATIC_ROOT = BASE_DIR / 'staticfiles-cdn'  # in production we want cdn
-# extra line for digitalocean space to collect data from
 # MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / "staticfiles-cdn" / "productimg"
+MEDIA_ROOT = BASE_DIR / 'staticfiles-cdn' / 'uploads'
+
+
+# STATIC_ROOT = BASE_DIR / 'staticfiles-cdn'  # in production we want cdn
+# extra line for digitalocean space to collect data from
+# MEDIA_ROOT = BASE_DIR / "staticfiles-cdn" / "uploads"
 
 # noqa: letting vscode know that this import is fine for now,not part of good practices because it actually indirectly put all code in "conf.py" file here, we do this because for now we want to import all that code here.
 from .cdn.conf import *  # noqa
