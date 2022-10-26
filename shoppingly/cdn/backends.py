@@ -12,7 +12,7 @@ class StaticRootS3Boto3Storage(S3Boto3Storage):
 # this will make anything uploading through our models will go there in media folder on digitalocean.
 
 
-class PublicMediaRootS3Boto3Storages(S3Boto3Storage):
+class MediaRootS3Boto3Storage(S3Boto3Storage):
     location = "media"
     default_acl = 'public-read'
 
