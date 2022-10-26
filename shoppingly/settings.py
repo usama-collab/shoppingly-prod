@@ -154,13 +154,14 @@ if USE_SPACES:
     PUBLIC_MEDIA_LOCATION = 'media'
     MEDIA_URL = f'{AWS_S3_ENDPOINT_URL}/{PUBLIC_MEDIA_LOCATION}/'
     DEFAULT_FILE_STORAGE = 'shoppingly.cdn.backends.PublicMediaRootS3Boto3Storages'
+    # https://shopingly-space.fra1.digitaloceanspaces.com/media/productimg/0_98drx4MegZUq4iTd.jpeg
 else:
     STATIC_URL = '/static/'
     STATIC_ROOT = BASE_DIR / 'staticfiles'
     MEDIA_URL = '/media/'
     MEDIA_ROOT = BASE_DIR / 'media'
 
-STATICFILES_DIRS = (BASE_DIR / 'static',)
+STATICFILES_DIRS = (BASE_DIR / 'static', 'media',)
 MEDIAFILES_DIRS = (os.path.join(BASE_DIR, "media"),)
 
 # MEDIA_URL = '/media/'
