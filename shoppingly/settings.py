@@ -16,7 +16,7 @@ DEBUG = config('DEBUG', cast=bool, default=True)
 # if not DEBUG:
 #     ALLOWED_HOSTS += os.getenv("DJANGO_ALLOWED_HOSTS",
 #                                "127.0.0.1,localhost").split(",")
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = config("ALLOWED_HOSTS").split(" ")
 
 
 # Application definition
@@ -70,7 +70,24 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    },
+    # 'Postgresql': {
+    #     # 'ENGINE': 'django.db.backends.postgresql',
+    #     # or
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'storefront2',
+    #     'HOST': 'localhost',
+    #     'USER': os.getenv('DEV_DB_USER'),
+    #     'PASSWORD': os.getenv('DEV_DB_PASSWORD')
+    # },
+    # 'mysql': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'storefront2',
+    #     # 'HOST': 'mysql',
+    #     'HOST': 'localhost',
+    #     'USER': os.getenv('DEV_DB_USER'),
+    #     'PASSWORD': os.getenv('DEV_DB_PASSWORD')
+    # },
 }
 
 # Password validation
