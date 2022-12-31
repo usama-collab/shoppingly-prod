@@ -14,11 +14,11 @@ if USE_SPACES:
     AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
     # static settings
     AWS_LOCATION = 'space-shoppingly/static'
-    STATIC_URL = f'https://shopingly-space.fra1.digitaloceanspaces.com/{AWS_LOCATION}/'
+    STATIC_URL = f'https://shoppingly-space.nyc3.digitaloceanspaces.com/{AWS_LOCATION}/'
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     # public media settings
     PUBLIC_MEDIA_LOCATION = 'space-shoppingly/media'
-    MEDIA_URL = f'https://shopingly-space.fra1.digitaloceanspaces.com/{PUBLIC_MEDIA_LOCATION}/'
+    MEDIA_URL = f'https://shoppingly-space.nyc3.digitaloceanspaces.com/{PUBLIC_MEDIA_LOCATION}/'
 
     DEFAULT_FILE_STORAGE = 'shoppingly.cdn.backends.MediaRootS3Boto3Storage'
 else:

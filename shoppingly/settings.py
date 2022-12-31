@@ -16,7 +16,8 @@ DEBUG = config('DEBUG', cast=bool, default=True)
 # if not DEBUG:
 #     ALLOWED_HOSTS += os.getenv("DJANGO_ALLOWED_HOSTS",
 #                                "127.0.0.1,localhost").split(",")
-ALLOWED_HOSTS = config("ALLOWED_HOSTS").split(" ")
+# ALLOWED_HOSTS = config("ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
