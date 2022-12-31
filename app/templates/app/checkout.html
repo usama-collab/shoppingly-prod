@@ -1,0 +1,54 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Buy Now{% endblock title %}
+{% block main-content %}
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-sm-6">
+      <h4>Order Summary</h4>
+      <hr>
+      {% for item in cart_items %}
+
+      <div class="card mb-2">
+        <div class="card-body">
+          <h5>Product: {{item.product.title}}</h5>
+          <p>Quantity: {{item.quantity}}</p>
+          <p class="fw-bold">Price: {{item.total_cost}}</p>
+        </div>
+      </div>
+      {% endfor %}
+      <p class="fw-bold">Total Cost + Rs. 70 = {{totalamount}}</p>
+      <small>Term and Condition: Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, ullam saepe! Iure
+        optio repellat dolor velit, minus rem. Facilis cumque neque numquam laboriosam, accusantium adipisci nisi nihil
+        in et quis?</small>
+    </div>
+    <div class="col-sm-4 offset-sm-1">
+      <h4>Select Shipping Address</h4>
+      <hr>
+      <!-- using form we select one of the radio button to select a single addr if user have multiple,and then send that instructions of address through radio box button to the url "paymentdone" -->
+      <form action="/paymentdone">
+        {% for ad in addr %}
+
+        <div class="card">
+          <div class="card-body">
+            <h5>{{ad.name}}</h5>
+            <p>{{ad.locality}}, {{ad.city}}, {{ad.state}} - {{ad.zipcode}}</p>
+          </div>
+        </div>
+        <div class="form-check mt-2 mb-5">
+          <!-- here we define logic for the address of customer while selecting using radio button,so we pass the if of address of customer in radio button through attributes like value,name and id,so this radio button can catch only address of customer at a time not both in case he have more then one addressess -->
+          <input class="form-check-input" type="radio" value="{{ ad.id }}" name="custid"
+            id="custadd{{ forloop.counter }}">
+          <!-- triggering the id of address in label of radio box here in attr "for" -->
+          <label class="form-check-label fw-bold" for="custadd{{forloop.counter}}">
+            Address: {{ forloop.counter }} </label>
+        </div>
+        {% endfor %}
+        <div class="text-end">
+          <button type="submit" class="btn btn-warning mt-3 px-5 fw-bold">Continue</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock main-content %}
