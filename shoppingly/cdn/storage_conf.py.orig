@@ -2,7 +2,11 @@ import os
 from decouple import config
 from shoppingly.settings import BASE_DIR
 
+<<<<<<< HEAD
+USE_SPACES = config('USE_SPACES', cast=bool, default=False)
+=======
 USE_SPACES = config('USE_SPACES', cast=bool, default=True)
+>>>>>>> b978e4bbea644b6089598b9f23423cce07b286a5
 
 if USE_SPACES:
     # settings

@@ -1,0 +1,2 @@
+# git remote show origin
+# remote origin https://github.com/QandeelKhan/shoppingly-prod.git
